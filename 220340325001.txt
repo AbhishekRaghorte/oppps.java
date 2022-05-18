@@ -1,0 +1,213 @@
+Q1:-
+a & b)
+
+class Car{
+	private int year;
+	private String make;
+	private double speed;
+	
+	Car(int year,String make,double speed){
+		this.year = year;
+		this.make = make;
+		this.speed = speed;
+	}
+	public int getYear(){
+		return this.year;
+	}
+	public String getMake(){
+		return this.make;
+	}
+	public double getSpeed(){
+		return this.speed;
+	}
+	void accelerate(){
+		this.speed = this.speed+1;
+	}
+
+	
+}
+
+
+c)
+class RaceTrack{
+	public static void main(String[] args){
+		Car c = new Car(2010,"Porsche",25.0);
+		System.out.println(c.getYear()+" "+c.getMake()+" "+c.getSpeed());
+		
+		c.accelerate();
+		System.out.println(c.getSpeed());	
+	}
+
+}
+
+OUTPUT:-
+
+D:\java_Exam>javac RaceTrack.java
+
+D:\java_Exam>java RaceTrack
+Year of Manufacture 2010 Name of car Porsche Speed of car 25.0
+26.0
+
+
+
+2)
+import java.util.*;
+
+class Item{
+	int itemId;
+	String itemName;
+	
+	Item(int itemId,String itemName){
+		this.itemId = itemId;
+		this.itemName = itemName;
+	}
+	Item(){}
+	
+	void setitemId(int itemId){
+		this.itemId = itemId;
+	}
+	void setitemName(String itemName){
+		this.itemName = itemName;
+	}		
+	public String toString(){
+		return this.itemId+" "+this.itemName ;
+	}
+
+}
+class namesort implements Comparator<Item>{
+	public int compare(Item I1,Item I2){
+		return I1.itemName.compareTo(I2.itemName);
+	}
+}
+class idsort implements Comparator<Item>{
+	
+	public int compare(Item I1,Item I2){
+		return I2.itemId-(I2.itemId);
+	}
+}
+
+
+class Inventory{
+	static Item I = new Item();
+	static ArrayList<Item> list = new ArrayList<>();
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int choice;
+		Item I1 = new Item(101,"ABC");
+		Item I2 = new Item(102,"RST");
+		Item I3 = new Item(103,"XYZ");
+		Item I4 = new Item(104,"HMN");
+		Item I5 = new Item(105,"MNO");
+		list.add(I1);
+		list.add(I2);
+		list.add(I3);
+		list.add(I4);
+		list.add(I5);
+		
+		do{
+		System.out.println("Enter your choice == ");
+		System.out.println("1) Add Item.\n2) Display complte inventory in sorted order of item as well as itemId.\n3) Remove Item.\n4) Exit");
+			
+		choice = sc.nextInt();
+		switch(choice){
+			case 1:
+				System.out.println("Enter your details as follows");
+				System.out.println("Enter Item you want to add");
+					
+				for(int i=1;i<1;i++){
+					System.out.println("Enter id of item");
+					int d=sc.nextInt();
+					I.setitemId(d);
+					System.out.println("Enter name of item");
+					sc.nextLine();
+						
+					String ss=sc.nextLine();
+					I.setitemName(ss);
+					list.add(I);
+				}
+				System.out.println("Added items");
+				System.out.println(list);
+				break;
+					
+			case 2:
+				System.out.println("Before sorting");
+				System.out.println(list);
+				System.out.println("sorting by id");
+				idsort n2 = new idsort();
+				Collections.sort(list,n2);
+				System.out.println(list);
+				System.out.println("sorting by name");
+				namesort n1 = new namesort();
+				Collections.sort(list,n1);
+				System.out.println(list);
+				break;
+					
+			case 3:
+				System.out.println("List as follows");
+				System.out.println(list);
+				System.out.println("Enter index od item which you want to remove index start from 0");
+				int re = sc.nextInt();
+				list.remove(re);
+				System.out.println("List after removal");
+				System.out.println(list);
+				break;
+					
+			case 4:
+				System.out.println("Thank you");
+				break;
+					
+			}
+			
+		}while(choice!=4);
+		
+		
+	}
+
+}
+
+OUTPUT:-
+D:\java_Exam>javac Inventory.java
+
+D:\java_Exam>java Inventory
+Enter your choice ==
+1) Add Item.
+2) Display complte inventory in sorted order of item as well as itemId.
+3) Remove Item.
+4) Exit
+1
+Enter your details as follows
+Enter Item you want to add
+Added items
+[101 ABC, 102 RST, 103 XYZ, 104 HMN, 105 MNO]
+Enter your choice ==
+1) Add Item.
+2) Display complte inventory in sorted order of item as well as itemId.
+3) Remove Item.
+4) Exit
+2
+Before sorting
+[101 ABC, 102 RST, 103 XYZ, 104 HMN, 105 MNO]
+sorting by id
+[101 ABC, 102 RST, 103 XYZ, 104 HMN, 105 MNO]
+sorting by name
+[101 ABC, 104 HMN, 105 MNO, 102 RST, 103 XYZ]
+Enter your choice ==
+1) Add Item.
+2) Display complte inventory in sorted order of item as well as itemId.
+3) Remove Item.
+4) Exit
+3
+List as follows
+[101 ABC, 104 HMN, 105 MNO, 102 RST, 103 XYZ]
+Enter index od item which you want to remove index start from 0
+4
+List after removal
+[101 ABC, 104 HMN, 105 MNO, 102 RST]
+Enter your choice ==
+1) Add Item.
+2) Display complte inventory in sorted order of item as well as itemId.
+3) Remove Item.
+4) Exit
+4
+Thank you
+
